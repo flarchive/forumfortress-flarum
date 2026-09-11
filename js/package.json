@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "type": "module",
+  "name": "@forumfortress/flarum",
+  "version": "1.4.0",
+  "forumFortressPluginVersion": "1.4.0",
+  "devDependencies": {
+    "@flarum/jest-config": "^2.0.2",
+    "@flarum/prettier-config": "^1.0.0",
+    "@types/node": "20.10.0",
+    "flarum-tsconfig": "^2.0.0",
+    "flarum-webpack-config": "^3.0.0",
+    "flarum-webpack-config-v1": "npm:flarum-webpack-config@^2.0.2",
+    "mithril": "^2.2.2",
+    "prettier": "^2.5.1",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^4.9.1"
+  },
+  "scripts": {
+    "build": "npm run build:v2 && npm run build:v1",
+    "build:v1": "webpack --config webpack.v1.config.cjs --mode production",
+    "build:v2": "webpack --config webpack.config.cjs --mode production",
+    "dev": "webpack --config webpack.config.cjs --mode development --watch",
+    "dev:v1": "webpack --config webpack.v1.config.cjs --mode development --watch",
+    "format": "prettier --write src tests",
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js"
+  }
+}

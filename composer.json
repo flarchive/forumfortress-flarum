@@ -1,0 +1,69 @@
+{
+    "name": "forumfortress/flarum",
+    "description": "Forum Fortress anti-spam protection for Flarum 1.8.x and 2.x, tested through Flarum 2.0.0-rc.8.",
+    "type": "flarum-extension",
+    "keywords": [
+        "flarum",
+        "anti-spam",
+        "moderation",
+        "security"
+    ],
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Forum Fortress",
+            "homepage": "https://forumfortress.com/"
+        }
+    ],
+    "homepage": "https://forumfortress.com/",
+    "support": {
+        "docs": "https://forumfortress.com/docs/install/flarum/",
+        "forum": "https://forumfortress.com/#support",
+        "issues": "https://github.com/Forum-Fortress/flarum/issues",
+        "source": "https://github.com/Forum-Fortress/flarum"
+    },
+    "require": {
+        "php": ">=8.0",
+        "flarum/core": "^1.8 || ^2.0.0-rc.5",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "suggest": {
+        "flarum/approval": "Enables Forum Fortress moderation queue synchronization.",
+        "flarum/flags": "Enables Forum Fortress moderation queue synchronization.",
+        "flarum/suspend": "Enables spam-clean actions to suspend abusive accounts."
+    },
+    "autoload": {
+        "psr-4": {
+            "ForumFortress\\Flarum\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.x-dev"
+        },
+        "flarum-extension": {
+            "title": "Forum Fortress",
+            "category": "feature",
+            "optional-dependencies": [
+                "flarum/approval",
+                "flarum/flags",
+                "flarum/suspend"
+            ],
+            "icon": {
+                "name": "fas fa-shield-alt",
+                "backgroundColor": "#173f35",
+                "color": "#d9f7e8"
+            }
+        },
+        "forum-fortress": {
+            "supported-flarum": [
+                "1.8.x",
+                "2.x"
+            ],
+            "tested-flarum": [
+                "1.8.20",
+                "2.0.0-rc.8"
+            ]
+        }
+    }
+}

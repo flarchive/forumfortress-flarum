@@ -1,0 +1,35 @@
+name: Flarum plugin CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: flarum-plugin-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: js/package-lock.json
+      - name: Install Composer
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes composer
+      - name: Validate Composer metadata
+        run: composer validate --no-check-publish --no-interaction --strict
+      - name: Build Flarum 1 and 2 admin assets
+        working-directory: js
+        run: |
+          npm ci
+          npm run build
